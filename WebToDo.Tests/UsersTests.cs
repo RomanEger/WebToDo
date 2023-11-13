@@ -2,10 +2,10 @@
 
 namespace WebToDo.Tests
 {
-    public class UsersTests
+    public class UsersTests : Users
     {
         private readonly Users users;
-
+        
         public UsersTests()
         {
             users = new Users();

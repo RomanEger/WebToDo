@@ -13,7 +13,7 @@ namespace WebToDo.Models
             Password = password;
         }
 
-        protected bool IsValidEmail(string email)
+        private bool IsValidEmail(string email)
         {
             Regex regex = new Regex("^([\\w.-]+)([@][a-z.-]+)([.]+[a-z]{2,6})$");
             if (regex.IsMatch(email))
@@ -21,7 +21,7 @@ namespace WebToDo.Models
             return false;
         }
 
-        protected bool IsValidPasword(string password)
+        private bool IsValidPasword(string password)
         {
             Regex regex = new Regex("^(?=.*[a-zA-Z])(?=.*\\d)(?!.*\\s).*.{4,20}$");
             if (regex.IsMatch(password))
