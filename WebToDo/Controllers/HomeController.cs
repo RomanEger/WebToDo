@@ -10,10 +10,5 @@ namespace WebToDo.Controllers
         {
             return View();
         }
-        [Route("[action]")]
-        public IActionResult Login()
-        {
-            return View();
-        }
     }
 }

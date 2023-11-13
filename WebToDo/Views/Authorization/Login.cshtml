@@ -1,0 +1,26 @@
+﻿@model Users
+@{
+    
+}
+<html>
+    <head>
+        <title>Авторизация</title>
+        <link rel="stylesheet" href="~/css/main.css" />
+        <link rel="stylesheet" href="~/css/light-theme.css" id="theme-link" />
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <div class="div-title">
+                <form method="get" action="auth">
+                    <p>Логин</p>
+                    <input type="text" class="input-login" name="email"/>
+                    <p>Пароль</p>
+                    <input type="password" class="input-login" name="password"/>
+                    <input type="submit" value="Войти"/>
+                </form>
+            <p>Нет аккаунта? <a asp-action="registration">Создать</a></p>
+            </div>
+        </div>
+    </body>
+</html>
