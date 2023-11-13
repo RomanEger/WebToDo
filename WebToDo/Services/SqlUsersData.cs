@@ -13,8 +13,6 @@ namespace WebToDo.Services
         public SqlUsersData(IConfiguration conf)
         {
             conStr = conf.GetConnectionString("DefaultConnection");
-            //"Server=DESKTOP-LEU7Q9N\\User;DataBase=todoProject;Trusted_Connection=True;"
-            //"Server=DESKTOP-LEU7Q9N\\User;DataBase=todoProject;Trusted_Connection=True;"
         }
 
         public async Task<int> Add(Users newUser)
