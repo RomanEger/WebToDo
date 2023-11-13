@@ -2,7 +2,7 @@
 
 namespace WebToDo.Tests
 {
-    public class UsersTests : Users
+    public class UsersTests
     {
         private readonly Users users;
         
