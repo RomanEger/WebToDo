@@ -9,10 +9,11 @@ namespace WebToDo.Services
     public class SqlUsersData : IUserData
     {
         private string conStr;
-
+        private IConfiguration configuration;
         public SqlUsersData(IConfiguration conf)
         {
             conStr = conf.GetConnectionString("DefaultConnection");
+            configuration = conf;
         }
 
         public async Task<int> Add(Users newUser)
@@ -70,9 +71,19 @@ namespace WebToDo.Services
         {
             using (IDbConnection db = new SqlConnection(conStr))
             {
-                var sqlQuery = $"SELECT COUNT(Id) FROM Users WHERE Email='{Email}' AND Password='{Password}'";
-                int count = await db.QueryFirstOrDefaultAsync<int>(sqlQuery);
-                return count;
+                var sqlQuery = $"SELECT Id FROM Users WHERE Email='{Email}' AND Password='{Password}'";
+                int id = await db.QueryFirstOrDefaultAsync<int>(sqlQuery);
+                return id;
+            }
+        }
+
+        public async Task<IEnumerable<Tasks>> SelectUserTasks(int id)
+        {
+            using(IDbConnection db = new SqlConnection(conStr))
+            {
+                SqlTasksData sqlTasksData = new SqlTasksData(configuration);
+                var list = await sqlTasksData.GetAll(id);
+                return list;
             }
         }
     }

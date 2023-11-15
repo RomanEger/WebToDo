@@ -31,7 +31,7 @@ namespace WebToDo.Models
         int id;
         public int Id { get { return id; } set { if(value>0)id = value; } }
 
-        string email;
+        string email = string.Empty;
         public string Email
         {
             get { return email; }
@@ -44,7 +44,7 @@ namespace WebToDo.Models
             }
         }
 
-        string password;
+        string password = string.Empty;
         [StringLength(20, ErrorMessage = "Минимум {2}, максимум {1}", MinimumLength = 4)]
         public string Password
         {

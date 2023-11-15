@@ -10,6 +10,6 @@ namespace WebToDo.Services
         Task<int> Save(Users user);
         Task<int> Delete(Users user);
         Task<int> Select(string email, string password);
-
+        Task<IEnumerable<Tasks>> SelectUserTasks(int id);
     }
 }
