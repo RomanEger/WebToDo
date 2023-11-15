@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 var conStr = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddScoped<IUserData, SqlUsersData>();
+builder.Services.AddScoped<ITaskData, SqlTasksData>();
 
 builder.Services.AddAuthentication();
 
