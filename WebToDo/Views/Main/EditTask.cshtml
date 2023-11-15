@@ -1,0 +1,48 @@
+﻿@model Tasks
+
+<html>
+    <head>
+        <title>
+            Редактирование
+        </title>
+        <link rel="stylesheet" href="~/css/main.css" />
+        <link rel="stylesheet" href="~/css/light-theme.css" id="theme-link" />
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0">
+    </head>
+    <body>
+        <form method="post" asp-action="Update">
+            <div style="margin:5%">
+                <div style="margin-bottom:3%;">
+                    <label for="checkbox">Выполнена</label>
+                    <input type="checkbox" name="isCompleted" value="true" checked="@Model?.IsCompleted"/>
+                </div>
+                <div style="margin-bottom:3%;">
+                    <label for="textarea">Название</label><br />
+                    <textarea class="input-task-title" name="title" maxlength="100">@Model?.Title</textarea>
+                </div>
+                <div style="margin-bottom:3%;">
+                    <label for="textarea">Описание</label><br />
+                    <textarea class="input-task-content" name="content">@Model?.Content</textarea>
+                </div>
+                <div class="div-info" style="width:90%;">
+                    <input type="submit" class="btn-back" asp-action="TaskList" value="Назад"/>
+                    <input type="submit" class="btn-save" asp-route-idUser="@Model?.UserId" asp-route-id="@Model?.Id" asp-action="Update" value="Сохранить"/>
+                </div>
+            </div>
+
+        </form>
+    <div class="footer">
+        <p>Info</p>
+    </div>
+    <script>
+        $(function () {
+            $("textarea[maxlength]").bind('input propertychange', function () {
+                var maxLength = $(this).attr('maxlength');
+                if ($(this).val().length > maxLength) {
+                    $(this).val($(this).val().substring(0, maxLength));
+                }
+            })
+        });
+    </script>
+    </body>
+</html>

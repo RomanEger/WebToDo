@@ -1,5 +1,39 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<Tasks>
+
+<html>
+    <head>
+        <title>Мои задачи</title>
+        <link rel="stylesheet" href="~/css/main.css" />
+        <link rel="stylesheet" href="~/css/light-theme.css" id="theme-link" />
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0">
+    </head>
+    <body style="margin:5%">
+        <div>
+        <table>
+                @foreach (var item in Model ?? new List<Tasks>())
+                {
+                <tr>
+                           
+                            <td>
+                                <label for="checkbox">Выполнена</label>
+                                <input type="checkbox" checked="@item.IsCompleted" onclick="return false;"/>
+                                <h2>
+                                    @item.Title
+                                </h2>
+                                <p style="text-align:right;">
+                                    <a asp-action="EditTask" asp-route-id="@item.Id">Изменить</a>
+                                    <a asp-action="DelTask" asp-route-id="@item.Id" style="margin-left:1%">Удалить</a>
+                                </p>
+                                
+                            </td>
+                    </tr>
+                }
+
+            </table>
+            @*<a asp-action="AddTask" asp-route-id="@Model?.First()?.UserId">Добавить</a>*@
+        </div>
+    <div class="footer">
+        <p>Info</p>
+    </div>
+    </body>
+</html>
