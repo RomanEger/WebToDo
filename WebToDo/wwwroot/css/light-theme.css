@@ -11,10 +11,10 @@
 
 
 .footer {
-    background-color: #00b6ff;
+    background-color: #4ccbff;
     color: #fafaff;
 }
 
 .input-login {
-    border-color: cornflowerblue;
+    border:2px groove black;
 }

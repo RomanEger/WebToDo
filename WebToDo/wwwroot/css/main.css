@@ -9,7 +9,7 @@ div {
     margin-right: 3%;
 }
 
-.div-indo {
+.div-info {
     display: inline-block;
 }
 
@@ -20,10 +20,11 @@ div {
 
 .btn-start {
     border-width: 1px;
-    border-radius: 3px;
+    border-radius: 15px;
     min-width: 12%;
     min-height: 4%;
     cursor: pointer;
+    font-size: 80%;
 }
 
 .img-style {
@@ -47,6 +48,72 @@ div {
     width: 40%;
     height: 3%;
     border-width: 2px;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 90%;
+}
+
+table {
+    width: 80%;
+    margin:auto;
+    max-height: 70%;
+}
+
+th{
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border: 2px solid #007f7f;
+    border-radius: 15px;
+}
+
+.btn-back {
+    border: none;
+    background: #007f7f;
+    border-radius: 15px;
+    min-width: 25%;
+    min-height: 4%;
+    cursor: pointer;
+    font-size: 80%;
+    margin-left: 0;
+    margin-right: 5%;
+    color: white;
+}
+
+.btn-save {
+    border: none;
+    background: #00ff80;
+    border-radius: 15px;
+    min-width: 25%;
+    min-height: 4%;
+    cursor: pointer;
+    font-size: 80%;
+    margin-left: 5%;
+    margin-right: 0;
+}
+
+.input-task-title {
+    width: 80%;
+    resize: none;
+    height: 6%;
+    text-align: left;
+    text-indent: 1%;
+    padding: 1%;
+    border: 2px solid #007f7f;
+    border-radius: 15px;
+    font-size: 120%;
+}
+
+.input-task-content {
+    width: 80%;
+    resize: vertical;
+    min-height: 15%;
+    max-height: 40%;
+    text-align: left;
+    text-indent: 1%;
+    padding: 1%;
+    border: 2px solid #007f7f;
+    border-radius: 15px;
+    font-size: 120%;
 }
