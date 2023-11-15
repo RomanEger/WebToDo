@@ -18,37 +18,30 @@ namespace WebToDo.Controllers
         [Route("[action]")]
         public async Task<IActionResult> TaskList(string email)
         {
-            if (_userId > 0)
-            {
-                var list = await tasks.GetAll(_userId);
-                return View(list);
-            }
-            else
-            {
+            
                 int idUser = await tasks.GetUserId(email);
                 var list = await tasks.GetAll(idUser);
                 _userId = idUser;
                 return View(list);
-            }
         }
 
         [Route("[action]")]
         public async Task<IActionResult> EditTask(int id)
         {
             var task = await tasks.Get(id);
-            task.UserId = _userId;
+            task.IdUser = _userId;
             return View("EditTask", task);
         }
 
 
         [Route("[action]")]
-        public async Task<IActionResult> Update(int id, int idUser, string title, string content, bool isCompleted)
+        public async Task<IActionResult> UpdateTask(int id, int idUser, string title, string content, bool isCompleted)
         {
 
             var task = new Tasks()
             {
                 Id = id,
-                UserId = _userId,
+                IdUser = _userId,
                 Title = title,
                 Content = content,
                 IsCompleted = isCompleted
@@ -61,12 +54,34 @@ namespace WebToDo.Controllers
         [Route("[action]")]
         public async Task<IActionResult> DelTask(int id)
         {
+
             var task = await tasks.Get(id);
-            await tasks.Delete(task);
+            bool isComleted = task.IsCompleted;
+            if(isComleted)
+                await tasks.Delete(task);
             var list = await tasks.GetAll(_userId);
-            return View("EditTask", list);
+            return View("TaskList", list);
         }
 
+        [Route("[action]")]
+        public IActionResult GetPageAddTask()
+        {
+            return View("AddTask");
+        }
 
+        [Route("[action]")]
+        public async Task<IActionResult> AddTask(string title, string content, bool isCompleted)
+        {
+            var task = new Tasks()
+            {
+                IdUser = _userId,
+                Title = title,
+                Content = content,
+                IsCompleted = isCompleted
+            };
+            await tasks.Add(task);
+            var list = await tasks.GetAll(_userId);
+            return View("TaskList", list);
+        }
     }
 }

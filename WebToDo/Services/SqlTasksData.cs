@@ -51,8 +51,7 @@ namespace WebToDo.Services
         {
             using (IDbConnection db = new SqlConnection(conStr))
             {
-                var list = await db.QueryAsync<Tasks>($"SELECT * FROM Tasks WHERE IdUser={idUser}");
-                return list;
+                return await db.QueryAsync<Tasks>($"SELECT * FROM Tasks WHERE IdUser={idUser}");
             }
         }
 
