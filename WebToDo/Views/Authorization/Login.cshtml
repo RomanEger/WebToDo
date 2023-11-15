@@ -1,8 +1,4 @@
-﻿@model Users
-@{
-    
-}
-<html>
+﻿<html>
     <head>
         <title>Авторизация</title>
         <link rel="stylesheet" href="~/css/main.css" />
@@ -12,15 +8,25 @@
     <body>
         <div>
             <div class="div-title">
-                <form method="get" action="auth">
-                    <p>Логин</p>
-                    <input type="text" class="input-login" name="email"/>
-                    <p>Пароль</p>
-                    <input type="password" class="input-login" name="password"/>
-                    <input type="submit" value="Войти"/>
+                <form asp-controller="Main" method="get" asp-action="tasklist">
+                    <p>
+                        <label for="text">Логин</label>
+                        <br />
+                        <input required type="text" class="input-login" name="email" />
+                    </p>
+                    <p>
+                        <label for="password">Пароль</label>
+                        <br />
+                        <input required type="password" class="input-login" name="password" />
+                    </p>
+                    <br />
+                    <input type="submit" @*onclick="window.location.href='tasklist';"*@ class="btn-start" value="Войти"/>
                 </form>
             <p>Нет аккаунта? <a asp-action="registration">Создать</a></p>
             </div>
         </div>
+    <div class="footer">
+        <p>Info</p>
+    </div>
     </body>
 </html>

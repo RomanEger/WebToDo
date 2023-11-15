@@ -11,16 +11,31 @@
     <div>
         <div class="div-title">
             <form method="post" action="reg">
-                <p>Логин</p>
-                <input type="text" class="input-login" name="email" />
-                <p>Пароль</p>
-                <input type="password" class="input-login" name="password"/>
-                <br/>
-                <input type="submit" value="Зарегистрироваться" />
+                <p>
+                    <label for="text">Логин</label>
+                    <br />
+                    <input required type="text" class="input-login" name="email" />
+                </p>
+                <p>
+                    <label for="password">Пароль</label>
+                    <br />
+                    <input required type="password" class="input-login" name="password" />
+                    <br/>
+                </p>
+                <p>
+                    <label for="password">Повторите пароль</label>
+                    <br />
+                    <input required type="password" class="input-login" name="passwordRepeat" />
+                </p>
+                <br />
+                <input type="submit" class="btn-start" value="Зарегистрироваться" />
                 <p>@Model?.Description</p>
             </form>
             <p>Нет аккаунта? <a asp-action="registration">Создать</a></p>
         </div>
+    </div>
+    <div class="footer">
+        <p>Info</p>
     </div>
     </body>
 </html>

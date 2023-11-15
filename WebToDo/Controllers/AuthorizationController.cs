@@ -20,23 +20,23 @@ namespace WebToDo.Controllers
             return View();
         }
 
-        [Route("[action]")]
-        public async Task<IActionResult> Auth(string email, string password)
-        {
-            try
-            {
-                var users = await this.users.Select(email, password);
-                if (users > 0)
-                    return View("TaskList");
-                else
-                    return View();
-            }
-            catch
-            {
-                return View();
-            }
+        //[Route("[action]")]
+        //public async Task<IActionResult> Auth(string email, string password)
+        //{
+        //    try
+        //    {
+        //        var users = await this.users.Select(email, password);
+        //        if (users > 0)
+        //            return View("~/Views/Main/TaskList.cshtml", await this.users.SelectUserTasks(users));
+        //        else
+        //            return View("Login");
+        //    }
+        //    catch
+        //    {
+        //        return View("Login");
+        //    }
             
-        }
+        //}
 
         [Route("[action]")]
         public IActionResult Registration()
@@ -45,8 +45,14 @@ namespace WebToDo.Controllers
         }
 
         [Route("[action]")]
-        public async Task<IActionResult> Reg(string email, string password)
+        public async Task<IActionResult> Reg(string email, string password, string passwordRepeat)
         {
+            if(password != passwordRepeat)
+            {
+                var regError = new RegistrationError();
+                regError.Description = "Пароли не совпадают";
+                return View("Registration", regError);
+            }
             try
             {
                 Users user = new(email, password);
