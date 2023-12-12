@@ -64,12 +64,12 @@ namespace WebToDo.Services
             }
         }
         
-        public async Task<int> GetUserId(string email)
+        public async Task<int> GetUserId(string email, string password)
         {
             using (IDbConnection db = new SqlConnection(conStr))
             {
                 //SqlUsersData sqlUsersData = new SqlUsersData(conf);
-                var sqlQuery = $"SELECT Id FROM Users WHERE Email='{email}'";
+                var sqlQuery = $"SELECT Id FROM Users WHERE Email='{email}' AND Password='{password}'";
                 return await db.QueryFirstOrDefaultAsync<int>(sqlQuery);
             }
         }

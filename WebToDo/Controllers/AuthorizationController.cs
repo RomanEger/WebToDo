@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using System.Threading.Tasks;
 using WebToDo.Models;
 using WebToDo.Services;
 
@@ -76,5 +77,6 @@ namespace WebToDo.Controllers
                 return View("Registration", regError);
             }            
         }
+
     }
 }

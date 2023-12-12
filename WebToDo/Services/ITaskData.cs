@@ -9,6 +9,6 @@ namespace WebToDo.Services
         Task<int> Add(Tasks newtask);
         Task<int> Update(Tasks task);
         Task<int> Delete(Tasks task);
-        Task<int> GetUserId(string email);
+        Task<int> GetUserId(string email, string password);
     }
 }
