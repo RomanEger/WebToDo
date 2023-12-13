@@ -1,0 +1,19 @@
+USE ToDo; --ваше имя БД
+
+CREATE TABLE Users
+(
+	Id INT PRIMARY KEY IDENTITY,
+	Email NVARCHAR(320) NOT NULL,
+	Password NVARCHAR(20) NOT NULL,
+	CONSTRAINT CK_Users_Password CHECK(LEN(Password) > = 4)
+);
+
+CREATE TABLE Tasks
+(
+	Id INT PRIMARY KEY IDENTITY,
+	IdUser INT NOT NULL,
+	Title NVARCHAR(100) NULL,
+	Content NVARCHAR(MAX) NOT NULL,
+	IsCompleted BIT NOT NULL,
+	CONSTRAINT FK_Tasks_To_Users_IdUser FOREIGN KEY(IdUser) REFERENCES Users(Id) 
+);
